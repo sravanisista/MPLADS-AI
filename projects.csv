@@ -1,0 +1,7 @@
+Project ID,State,District,MP/Constituency,Work Description,Work Category,Sanctioned Amount,Released Amount,Utilized Amount,Physical Progress,Financial Progress,Sanction Date,Completion Status,Risk Score,Risk Level
+MPL-TS-003,Telangana,Nizamabad,Example Constituency,Road Development,Infrastructure,4500000,4490000,4480000,68,99,12-04-2025,Completed,87,High
+MPL-AP-002,Andhra Pradesh,Vijayawada,Example Constituency,Government School Building,Education,3500000,3400000,2500000,70,72,18-05-2025,Ongoing,34,Low
+MPL-KA-001,Karnataka,Bengaluru Rural,Example Constituency,Village Drinking Water System,Water Supply,2700000,2600000,1900000,72,70,05-03-2025,Ongoing,28,Low
+MPL-MH-004,Maharashtra,Pune,Example Constituency,Rural Road Improvement,Infrastructure,6200000,6100000,5900000,38,95,22-01-2025,Ongoing,91,High
+MPL-TN-005,Tamil Nadu,Chennai,Example Constituency,Public Library Renovation,Education,1800000,1700000,900000,65,50,10-06-2025,Ongoing,22,Low
+MPL-RJ-006,Rajasthan,Jaipur,Example Constituency,Solar Street Lighting,Energy,3000000,2900000,2300000,48,77,15-02-2025,Ongoing,64,Medium

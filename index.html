@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>M
+        PLADS Monitoring Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="top-header">
+        <div class="brand">
+            <div class="india-icon">🇮🇳</div>
+
+            <div>
+                <h1>MPLADS Monitoring Dashboard</h1>
+                <p>Project Risk &amp; Anomaly Monitoring</p>
+            </div>
+        </div>
+
+        <span class="prototype-badge">Prototype</span>
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- PAGE INTRO -->
+        <section class="page-intro">
+            <div>
+                <h2>Dashboard</h2>
+                <p>
+                    Monitor MPLADS projects, fund utilization and
+                    implementation progress.
+                </p>
+            </div>
+
+            <div class="last-updated">
+                Demo Dataset
+            </div>
+        </section>
+
+
+        <!-- SUMMARY CARDS -->
+        <section class="summary-cards">
+
+            <div class="summary-card">
+                <div class="card-label">Total Projects</div>
+                <div class="card-value" id="totalProjects">0</div>
+                <div class="card-note">Projects monitored</div>
+            </div>
+
+            <div class="summary-card">
+                <div class="card-label">Total Sanctioned</div>
+                <div class="card-value" id="totalFunds">₹0</div>
+                <div class="card-note">Approved project funds</div>
+            </div>
+
+            <div class="summary-card risk-card">
+                <div class="card-label">High Risk Projects</div>
+                <div class="card-value high-number" id="highRisk">0</div>
+                <div class="card-note">Require closer monitoring</div>
+            </div>
+
+            <div class="summary-card">
+                <div class="card-label">Average Progress</div>
+                <div class="card-value" id="averageProgress">0%</div>
+                <div class="card-note">Physical progress</div>
+            </div>
+
+        </section>
+
+
+        <!-- MAP + RISK OVERVIEW -->
+        <section class="dashboard-grid">
+
+            <!-- INDIA MAP -->
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Project Risk Map</h3>
+                        <p>Project locations by risk level</p>
+                    </div>
+                </div>
+
+                <div class="map-area">
+
+                    <div class="india-map">
+
+                        <img class="india-map-image" src="india-map.svg" alt="Map of India showing states and union territories">
+
+                        <div class="map-title">INDIA</div>
+
+                        <button class="map-point high" style="top: 55%; left: 55%;" onclick="showProject('MPL-TS-003')">
+                            <span></span>
+                            Telangana
+                        </button>
+
+                        <button class="map-point medium" style="top: 52%; left: 47%;"
+                            onclick="showProject('MPL-AP-002')">
+                            <span></span>
+                            Andhra Pradesh
+                        </button>
+
+                        <button class="map-point low" style="top: 48%; left: 43%;" onclick="showProject('MPL-KA-001')">
+                            <span></span>
+                            Karnataka
+                        </button>
+
+                        <button class="map-point high" style="top: 44%; left: 66%;" onclick="showProject('MPL-MH-004')">
+                            <span></span>
+                            Maharashtra
+                        </button>
+
+                        <button class="map-point low" style="top: 67%; left: 49%;" onclick="showProject('MPL-TN-005')">
+                            <span></span>
+                            Tamil Nadu
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="map-legend">
+                    <span>
+                        <i class="legend-dot high-dot"></i>
+                        High Risk
+                    </span>
+
+                    <span>
+                        <i class="legend-dot medium-dot"></i>
+                        Medium Risk
+                    </span>
+
+                    <span>
+                        <i class="legend-dot low-dot"></i>
+                        Low Risk
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- RISK OVERVIEW -->
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Risk Overview</h3>
+                        <p>Distribution of monitored projects</p>
+                    </div>
+                </div>
+
+                <div class="risk-overview">
+
+                    <div class="risk-row">
+                        <div class="risk-info">
+                            <span class="risk-label">
+                                <i class="legend-dot high-dot"></i>
+                                High
+                            </span>
+
+                            <strong id="highCount">0</strong>
+                        </div>
+
+                        <div class="risk-bar">
+                            <div class="risk-fill high-fill" id="highBar">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="risk-row">
+                        <div class="risk-info">
+                            <span class="risk-label">
+                                <i class="legend-dot medium-dot"></i>
+                                Medium
+                            </span>
+
+                            <strong id="mediumCount">0</strong>
+                        </div>
+
+                        <div class="risk-bar">
+                            <div class="risk-fill medium-fill" id="mediumBar">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="risk-row">
+                        <div class="risk-info">
+                            <span class="risk-label">
+                                <i class="legend-dot low-dot"></i>
+                                Low
+                            </span>
+
+                            <strong id="lowCount">0</strong>
+                        </div>
+
+                        <div class="risk-bar">
+                            <div class="risk-fill low-fill" id="lowBar">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="monitoring-note">
+
+                    <div class="note-icon">!</div>
+
+                    <div>
+                        <strong>Monitoring insight</strong>
+
+                        <p>
+                            Projects with a large difference between
+                            financial and physical progress are flagged
+                            for closer review.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH AND FILTER -->
+        <section class="dashboard-panel project-section">
+
+            <div class="project-header">
+
+                <div>
+                    <h3>Project Records</h3>
+                    <p>Select a project to view complete details.</p>
+                </div>
+
+                <div class="filters">
+
+                    <input type="text" id="searchInput" placeholder="Search project, district or ID..."
+                        onkeyup="filterProjects()">
+
+                    <select id="stateFilter" onchange="filterProjects()">
+
+                        <option value="All">All States</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Andhra Pradesh">
+                            Andhra Pradesh
+                        </option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+
+                    </select>
+
+                    <select id="riskFilter" onchange="filterProjects()">
+
+                        <option value="All">All Risk Levels</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Project ID</th>
+                            <th>Project / Work</th>
+                            <th>State</th>
+                            <th>District</th>
+                            <th>Progress</th>
+                            <th>Risk Score</th>
+                            <th>Risk</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="projectTable">
+                        <!-- JavaScript will add rows -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PROJECT DETAILS MODAL -->
+    <div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+
+        <div class="project-modal" onclick="event.stopPropagation()">
+
+            <button class="close-button" onclick="closeProject()">
+                ×
+            </button>
+
+
+            <!-- MODAL HEADER -->
+            <div class="modal-header">
+
+                <div>
+                    <span class="modal-label">PROJECT DETAILS</span>
+
+                    <h2 id="detailName">
+                        Road Development
+                    </h2>
+
+                    <p id="detailLocation">
+                        Nizamabad, Telangana
+                    </p>
+                </div>
+
+
+                <div class="risk-score-box">
+
+                    <span id="detailRiskBadge" class="risk-badge high">
+                        🔴 HIGH RISK
+                    </span>
+
+                    <strong id="detailRiskScore">
+                        87/100
+                    </strong>
+
+                    <small>Risk Score</small>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT INFORMATION -->
+            <div class="details-section">
+
+                <h3>Project Information</h3>
+
+                <div class="details-grid">
+
+                    <div class="detail-item">
+                        <span>Project ID</span>
+                        <strong id="detailId">MPL-TS-003</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>State</span>
+                        <strong id="detailState">Telangana</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>District</span>
+                        <strong id="detailDistrict">Nizamabad</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>MP / Constituency</span>
+                        <strong id="detailMP">
+                            Example Constituency
+                        </strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Work Description</span>
+                        <strong id="detailWork">
+                            Road Development
+                        </strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Work Category</span>
+                        <strong id="detailCategory">
+                            Infrastructure
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FINANCIAL INFORMATION -->
+            <div class="details-section">
+
+                <h3>Financial Information</h3>
+
+                <div class="details-grid financial-grid">
+
+                    <div class="detail-item">
+                        <span>Sanctioned Amount</span>
+                        <strong id="detailSanctioned">
+                            ₹45,00,000
+                        </strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Released Amount</span>
+                        <strong id="detailReleased">
+                            ₹44,90,000
+                        </strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Utilized Amount</span>
+                        <strong id="detailUtilized">
+                            ₹44,80,000
+                        </strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Financial Progress</span>
+                        <strong id="detailFinancial">
+                            99%
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+            <div class="details-section">
+
+                <h3>Project Progress</h3>
+
+                <div class="progress-item">
+
+                    <div class="progress-title">
+                        <span>Physical Progress</span>
+                        <strong id="physicalText">68%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-value physical" id="physicalBar">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-title">
+                        <span>Financial Progress</span>
+                        <strong id="financialText">99%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-value financial" id="financialBar">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- OTHER DETAILS -->
+            <div class="details-section">
+
+                <h3>Other Details</h3>
+
+                <div class="details-grid">
+
+                    <div class="detail-item">
+                        <span>Sanction Date</span>
+                        <strong id="detailDate">
+                            12-04-2025
+                        </strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Completion Status</span>
+                        <strong id="detailStatus">
+                            Completed
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ANOMALY -->
+            <div class="anomaly-box">
+
+                <div class="anomaly-title">
+                    🚨 Risk / Anomaly Analysis
+                </div>
+
+                <div class="anomaly-score">
+                    Risk Score:
+                    <strong id="anomalyScore">
+                        87/100 🔴
+                    </strong>
+                </div>
+
+                <p id="anomalyText">
+                    Financial progress (99%) is significantly higher
+                    than physical progress (68%). This mismatch may
+                    require closer monitoring and verification.
+                </p>
+
+            </div>
+
+
+            <!-- DOWNLOAD -->
+            <div class="modal-actions">
+
+                <button class="download-button" onclick="downloadReport()">
+                    ↓ Download Project Report
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        <p>
+            MPLADS Monitoring Prototype · Demo data for demonstration
+            purposes only
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
