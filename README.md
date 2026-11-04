@@ -4,6 +4,12 @@
 
 **MPLADS Monitoring Dashboard – Project Risk & Anomaly Monitoring**
 
+## Project Summary
+
+This project is a lightweight dashboard for monitoring MPLADS-funded projects and identifying projects that may need closer attention. It helps track sanctioned amounts, released funds, utilization, physical progress, and financial progress across districts and states. The dashboard highlights high-risk projects using a simple rule-based risk model and provides quick access to detailed project records and anomaly explanations.
+
+The application is designed as a prototype monitoring tool for public-sector project oversight, helping users detect unusual gaps between financial and physical progress and review project performance at a glance.
+
 ## About the Project
 
 This is a basic prototype for monitoring projects implemented under the **Members of Parliament Local Area Development Scheme (MPLADS)**.
